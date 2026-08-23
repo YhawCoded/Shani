@@ -1,24 +1,33 @@
 const opening = document.getElementById("opening");
 const reveal = document.getElementById("reveal");
+const story = document.getElementById("story");
 
 const beginBtn = document.getElementById("beginBtn");
 const continueBtn = document.getElementById("continueBtn");
+const storyBtn = document.getElementById("storyBtn");
+
+
+function switchScreen(current, next) {
+
+  current.classList.add("fade-out");
+
+  setTimeout(() => {
+
+    current.classList.add("hidden");
+
+    next.classList.remove("hidden");
+    next.classList.add("fade-in");
+
+  }, 800);
+
+}
 
 
 beginBtn.addEventListener("click", () => {
 
   beginBtn.disabled = true;
 
-  opening.classList.add("fade-out");
-
-  setTimeout(() => {
-
-    opening.classList.add("hidden");
-
-    reveal.classList.remove("hidden");
-    reveal.classList.add("fade-in");
-
-  }, 800);
+  switchScreen(opening, reveal);
 
 });
 
@@ -27,16 +36,15 @@ continueBtn.addEventListener("click", () => {
 
   continueBtn.disabled = true;
 
-  reveal.classList.add("fade-out");
+  switchScreen(reveal, story);
 
-  setTimeout(() => {
+});
 
-    // Next section coming soon 👀
 
-    reveal.classList.add("hidden");
+storyBtn.addEventListener("click", () => {
 
-    alert("There's more... 👀");
+  storyBtn.disabled = true;
 
-  }, 800);
+  // Next screen coming next 👀
 
 });
