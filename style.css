@@ -921,3 +921,15 @@ button:hover {
   }
 
 }
+
+@keyframes confettiFall {
+
+  to {
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+
+    opacity: 0;
+  }
+
+}
