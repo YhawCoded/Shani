@@ -934,3 +934,35 @@ button:hover {
   }
 
 }
+/* ============================= */
+/* MOBILE SCROLL FIX              */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  body {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .screen {
+    width: 100%;
+    min-height: 100vh;
+    padding: 45px 0;
+    margin: 0 auto;
+  }
+
+  .story {
+    padding-top: 45px;
+    padding-bottom: 60px;
+  }
+
+  .profile,
+  .appreciation {
+    padding-top: 45px;
+    padding-bottom: 60px;
+  }
+
+}
