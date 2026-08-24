@@ -1,10 +1,12 @@
 const opening = document.getElementById("opening");
 const reveal = document.getElementById("reveal");
 const story = document.getElementById("story");
+const profile = document.getElementById("profile");
 
 const beginBtn = document.getElementById("beginBtn");
 const continueBtn = document.getElementById("continueBtn");
 const storyBtn = document.getElementById("storyBtn");
+const profileBtn = document.getElementById("profileBtn");
 
 
 function switchScreen(current, next) {
@@ -45,6 +47,14 @@ storyBtn.addEventListener("click", () => {
 
   storyBtn.disabled = true;
 
-  alert("Okay... now let's talk about you. 👀");
+  switchScreen(story, profile);
+
+});
+
+profileBtn.addEventListener("click", () => {
+
+  profileBtn.disabled = true;
+
+  // Next section coming 👀
 
 });
