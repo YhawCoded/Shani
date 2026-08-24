@@ -19,16 +19,13 @@ const birthdayStars =
 
 function switchScreen(current, next) {
 
-  current.classList.add("fade-out");
+  current.classList.add("hidden");
+  next.classList.remove("hidden");
 
-  setTimeout(() => {
-
-    current.classList.add("hidden");
-
-    next.classList.remove("hidden");
-    next.classList.add("fade-in");
-
-  }, 800);
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
 
 }
 
