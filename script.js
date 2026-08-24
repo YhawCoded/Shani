@@ -2,11 +2,15 @@ const opening = document.getElementById("opening");
 const reveal = document.getElementById("reveal");
 const story = document.getElementById("story");
 const profile = document.getElementById("profile");
+const appreciation =
+  document.getElementById("appreciation");
 
 const beginBtn = document.getElementById("beginBtn");
 const continueBtn = document.getElementById("continueBtn");
 const storyBtn = document.getElementById("storyBtn");
 const profileBtn = document.getElementById("profileBtn");
+const appreciationBtn =
+  document.getElementById("appreciationBtn");
 
 
 function switchScreen(current, next) {
@@ -55,6 +59,14 @@ profileBtn.addEventListener("click", () => {
 
   profileBtn.disabled = true;
 
-  // Next section coming 👀
+  switchScreen(profile, appreciation);
+
+});
+
+appreciationBtn.addEventListener("click", () => {
+
+  appreciationBtn.disabled = true;
+
+  // Birthday finale coming next 🎂
 
 });
