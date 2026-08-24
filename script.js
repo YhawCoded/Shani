@@ -45,6 +45,6 @@ storyBtn.addEventListener("click", () => {
 
   storyBtn.disabled = true;
 
-  // Next screen coming next 👀
+  alert("Okay... now let's talk about you. 👀");
 
 });
