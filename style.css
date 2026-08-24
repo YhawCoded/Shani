@@ -941,28 +941,31 @@ button:hover {
 @media (max-width: 600px) {
 
   body {
-    display: block;
-    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  .screen {
-    width: 100%;
+  /* Short screens stay vertically centered */
+  .opening,
+  .reveal {
     min-height: 100vh;
-    padding: 45px 0;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .story {
-    padding-top: 45px;
-    padding-bottom: 60px;
-  }
-
+  /* Long screens can scroll naturally */
+  .story,
   .profile,
   .appreciation {
-    padding-top: 45px;
-    padding-bottom: 60px;
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  /* Keep the birthday screen full-screen */
+  .finale {
+    min-height: 100vh;
   }
 
 }
