@@ -718,3 +718,206 @@ button:hover {
 #appreciationBtn {
   margin-top: 28px;
 }
+
+/* ============================= */
+/* BIRTHDAY FINALE                */
+/* ============================= */
+
+.finale {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  max-width: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(139, 92, 246, 0.12),
+      transparent 40%
+    ),
+    #050713;
+
+  overflow: hidden;
+}
+
+.birthday-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+
+  color: white;
+  font-size: 8px;
+
+  opacity: 0;
+
+  animation:
+    starAppear 1s ease forwards,
+    starFloat 4s ease-in-out infinite;
+}
+
+.birthday-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 520px;
+
+  text-align: center;
+
+  animation: birthdayIn 1.4s ease forwards;
+}
+
+.date {
+  margin-bottom: 15px;
+
+  color: #8993ad;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+.cake {
+  font-size: 54px;
+
+  margin-bottom: 15px;
+
+  animation: cakeFloat 3s ease-in-out infinite;
+}
+
+.final-eyebrow {
+  margin-bottom: 14px;
+
+  color: #a78bfa;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.finale h2 {
+  margin-bottom: 24px;
+
+  font-size: clamp(38px, 12vw, 62px);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+}
+
+.finale h2 span {
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #c084fc,
+    #f472b6
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.birthday-message {
+  max-width: 390px;
+
+  margin: 0 auto 14px;
+
+  color: #aeb6cc;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.signature {
+  margin-top: 26px;
+
+  color: #d7dced;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  font-style: italic;
+}
+
+#wishBtn {
+  margin-top: 30px;
+
+  background: rgba(167, 139, 250, 0.1);
+
+  box-shadow:
+    0 0 40px rgba(167, 139, 250, 0.12);
+}
+
+
+/* ============================= */
+/* FINALE ANIMATIONS              */
+/* ============================= */
+
+@keyframes birthdayIn {
+
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+@keyframes cakeFloat {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+@keyframes starAppear {
+
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+}
+
+@keyframes starFloat {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
