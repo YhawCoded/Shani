@@ -1,109 +1,241 @@
-const opening = document.getElementById("opening");
-const reveal = document.getElementById("reveal");
-const story = document.getElementById("story");
-const profile = document.getElementById("profile");
+/* ================================= */
+/* ELEMENTS                          */
+/* ================================= */
+
+const opening =
+  document.getElementById("opening");
+
+const reveal =
+  document.getElementById("reveal");
+
+const story =
+  document.getElementById("story");
+
+const profile =
+  document.getElementById("profile");
+
 const appreciation =
   document.getElementById("appreciation");
 
-const beginBtn = document.getElementById("beginBtn");
-const continueBtn = document.getElementById("continueBtn");
-const storyBtn = document.getElementById("storyBtn");
-const profileBtn = document.getElementById("profileBtn");
+const finale =
+  document.getElementById("finale");
+
+
+const beginBtn =
+  document.getElementById("beginBtn");
+
+const continueBtn =
+  document.getElementById("continueBtn");
+
+const storyBtn =
+  document.getElementById("storyBtn");
+
+const profileBtn =
+  document.getElementById("profileBtn");
+
 const appreciationBtn =
   document.getElementById("appreciationBtn");
-const finale = document.getElementById("finale");
-const wishBtn = document.getElementById("wishBtn");
+
+const wishBtn =
+  document.getElementById("wishBtn");
+
+
 const birthdayStars =
   document.getElementById("birthdayStars");
 
 
+/* ================================= */
+/* SCREEN TRANSITION                 */
+/* ================================= */
+
 function switchScreen(current, next) {
 
+  /*
+    Remove the current screen.
+  */
+
   current.classList.add("hidden");
+
+
+  /*
+    Reset the page scroll BEFORE showing
+    the next screen.
+  */
+
+  window.scrollTo(0, 0);
+
+
+  /*
+    Show the next screen.
+  */
+
   next.classList.remove("hidden");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "instant"
+
+  /*
+    Reset again after the browser has had
+    a chance to lay out the new screen.
+  */
+
+  requestAnimationFrame(() => {
+
+    window.scrollTo(0, 0);
+
   });
 
 }
 
 
+/* ================================= */
+/* OPENING → REVEAL                  */
+/* ================================= */
+
 beginBtn.addEventListener("click", () => {
+
+  if (beginBtn.disabled) return;
 
   beginBtn.disabled = true;
 
-  switchScreen(opening, reveal);
+  switchScreen(
+    opening,
+    reveal
+  );
 
 });
 
+
+/* ================================= */
+/* REVEAL → STORY                    */
+/* ================================= */
 
 continueBtn.addEventListener("click", () => {
 
+  if (continueBtn.disabled) return;
+
   continueBtn.disabled = true;
 
-  switchScreen(reveal, story);
+  switchScreen(
+    reveal,
+    story
+  );
 
 });
 
+
+/* ================================= */
+/* STORY → PROFILE                   */
+/* ================================= */
 
 storyBtn.addEventListener("click", () => {
 
+  if (storyBtn.disabled) return;
+
   storyBtn.disabled = true;
 
-  switchScreen(story, profile);
+  switchScreen(
+    story,
+    profile
+  );
 
 });
+
+
+/* ================================= */
+/* PROFILE → APPRECIATION             */
+/* ================================= */
 
 profileBtn.addEventListener("click", () => {
 
+  if (profileBtn.disabled) return;
+
   profileBtn.disabled = true;
 
-  switchScreen(profile, appreciation);
+  switchScreen(
+    profile,
+    appreciation
+  );
 
 });
 
 
+/* ================================= */
+/* APPRECIATION → FINALE             */
+/* ================================= */
+
 appreciationBtn.addEventListener("click", () => {
+
+  if (appreciationBtn.disabled) return;
 
   appreciationBtn.disabled = true;
 
-  switchScreen(appreciation, finale);
+  switchScreen(
+    appreciation,
+    finale
+  );
 
   createStars();
 
 });
 
+
+/* ================================= */
+/* CREATE BIRTHDAY STARS             */
+/* ================================= */
+
 function createStars() {
+
+  /*
+    Prevent duplicate stars if the function
+    ever gets called more than once.
+  */
+
+  birthdayStars.innerHTML = "";
+
 
   for (let i = 0; i < 45; i++) {
 
-    const star = document.createElement("span");
+    const star =
+      document.createElement("span");
+
 
     star.className = "star";
+
     star.textContent = "✦";
+
 
     star.style.left =
       Math.random() * 100 + "%";
 
+
     star.style.top =
       Math.random() * 100 + "%";
+
 
     star.style.animationDelay =
       Math.random() * 2 + "s";
 
+
     star.style.fontSize =
-      (Math.random() * 7 + 5) + "px";
+      Math.random() * 7 + 5 + "px";
+
 
     birthdayStars.appendChild(star);
 
   }
 
-  }
+}
+
+
+/* ================================= */
+/* WISH BUTTON                       */
+/* ================================= */
+
 wishBtn.addEventListener("click", () => {
 
-  wishBtn.innerHTML = "Wish sent ✦";
+  if (wishBtn.disabled) return;
+
+  wishBtn.innerHTML =
+    "Wish sent ✦";
 
   wishBtn.disabled = true;
 
@@ -111,41 +243,67 @@ wishBtn.addEventListener("click", () => {
 
 });
 
+
+/* ================================= */
+/* CONFETTI                          */
+/* ================================= */
+
 function createConfetti() {
 
   const pieces = 80;
+
 
   for (let i = 0; i < pieces; i++) {
 
     const piece =
       document.createElement("span");
 
-    piece.textContent =
-      Math.random() > 0.5 ? "✦" : "♡";
 
-    piece.style.position = "fixed";
+    piece.textContent =
+      Math.random() > 0.5
+        ? "✦"
+        : "♡";
+
+
+    piece.style.position =
+      "fixed";
+
 
     piece.style.left =
       Math.random() * 100 + "vw";
 
-    piece.style.top = "-20px";
+
+    piece.style.top =
+      "-20px";
+
 
     piece.style.fontSize =
-      (Math.random() * 10 + 8) + "px";
+      Math.random() * 10 + 8 + "px";
 
-    piece.style.zIndex = "10";
+
+    piece.style.zIndex =
+      "100";
+
+
+    piece.style.pointerEvents =
+      "none";
+
 
     piece.style.animation =
       `confettiFall ${
         Math.random() * 2 + 2
       }s linear forwards`;
 
+
     document.body.appendChild(piece);
 
+
     setTimeout(() => {
+
       piece.remove();
+
     }, 4000);
 
   }
 
-                         }
+      }
