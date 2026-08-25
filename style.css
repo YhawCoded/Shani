@@ -155,6 +155,10 @@ button:disabled {
 .hidden {
   display: none !important;
 }
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
 
 /* ================================= */
