@@ -43,45 +43,63 @@ const wishBtn =
 const birthdayStars =
   document.getElementById("birthdayStars");
 
-
-/* ================================= */
-/* SCREEN TRANSITION                 */
-/* ================================= */
-
 function switchScreen(current, next) {
 
-  /*
-    Remove the current screen.
-  */
-
-  current.classList.add("hidden");
-
+  const duration = 850;
 
   /*
-    Reset the page scroll BEFORE showing
-    the next screen.
-  */
-
-  window.scrollTo(0, 0);
-
-
-  /*
-    Show the next screen.
+    Prepare the next screen.
   */
 
   next.classList.remove("hidden");
 
+  next.classList.remove("transition-ready");
+  next.classList.add("transition-in");
+
 
   /*
-    Reset again after the browser has had
-    a chance to lay out the new screen.
+    Force the browser to register the
+    starting position before animating.
+  */
+
+  void next.offsetWidth;
+
+
+  /*
+    Start current screen leaving.
+  */
+
+  current.classList.add("transition-out");
+
+
+  /*
+    Bring the next screen in.
   */
 
   requestAnimationFrame(() => {
 
-    window.scrollTo(0, 0);
+    next.classList.remove("transition-in");
+    next.classList.add("transition-ready");
 
   });
+
+
+  /*
+    Once the animation is finished,
+    completely remove the old screen.
+  */
+
+  setTimeout(() => {
+
+    current.classList.add("hidden");
+
+    current.classList.remove("transition-out");
+
+    next.classList.remove("transition-ready");
+
+    window.scrollTo(0, 0);
+
+  }, duration);
 
 }
 
