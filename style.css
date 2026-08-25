@@ -1220,3 +1220,28 @@ button:disabled {
   }
 
   }
+
+/* ================================= */
+/* CINEMATIC SCREEN TRANSITIONS       */
+/* ================================= */
+
+.screen {
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.screen.transition-out {
+  opacity: 0;
+  transform: translateY(-18px) scale(0.985);
+}
+
+.screen.transition-in {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+}
+
+.screen.transition-ready {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
