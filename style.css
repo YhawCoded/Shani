@@ -1228,24 +1228,54 @@ button:disabled {
 /* ================================= */
 /* CINEMATIC SCREEN TRANSITIONS       */
 /* ================================= */
-
 .screen {
   transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.screen.transition-out {
-  opacity: 0;
-  transform: translateY(-18px) scale(0.985);
+    opacity 1.15s cubic-bezier(.22,1,.36,1),
+    transform 1.15s cubic-bezier(.22,1,.36,1),
+    filter 1.15s cubic-bezier(.22,1,.36,1);
 }
 
 .screen.transition-in {
   opacity: 0;
-  transform: translateY(18px) scale(0.985);
+  transform: translateY(24px) scale(.985);
+  filter: blur(5px);
 }
 
 .screen.transition-ready {
   opacity: 1;
   transform: translateY(0) scale(1);
+  filter: blur(0);
 }
+
+.screen.transition-out {
+  opacity: 0;
+  transform: translateY(-24px) scale(.985);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+
+button {
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+
+  transform: scale(0);
+
+  background: rgba(255, 255, 255, 0.32);
+
+  animation: ripple 0.65s ease-out forwards;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+    }
